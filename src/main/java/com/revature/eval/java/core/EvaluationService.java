@@ -649,36 +649,33 @@ public class EvaluationService {
 		if(i < 1) {
 			throw new IllegalArgumentException();
 		}
+		
+		for(int j = 1; j >= 1; j++) {
+		    if(isPrime(j)){
+		    	count += 1;
+		    }
+		       
 
-		for(int num = 2; num > 1; num++) {
-
-			if(isPrime(num)) {
-				count += 1;
-			}
-			if(count == i) {
-				primeN = num;
-				break;
-			}
+		    if(count == i) {
+		        primeN = j;
+		        break;
+		    }
 		}
+		
 
 		return primeN;
 	}
 
-	public boolean isPrime(int j) {
-		// TODO Write an implementation for this method declaration
-		boolean isP = true;
+private boolean isPrime(int k) {
+    if(k < 2)
+        return false;
 
-		if(j < 2) {
-			isP = false;
-		}
-		for (int i = 2; i<= j; i++) {
-			if(j % i == 0) {
-				isP = false;
-			}
-		}
-
-		return isP;
-	}
+    for (int j = 2; j * j <= k; j++) {
+        if (k % j == 0)
+            return false;
+    }
+    return true;
+}
 
 	/**
 	 * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
@@ -1099,7 +1096,7 @@ public class EvaluationService {
 		String s = string;
 		s = s.replaceAll("\\?", "").trim();
 		s = s.replaceAll("[^\\d-]", " ");
-		System.out.println(s);
+		//System.out.println(s);
 		
 		List<String> in = new ArrayList<String>(Arrays.asList(s.trim().split(" ")));
 		List<String> newList = new ArrayList<String>();
@@ -1137,7 +1134,7 @@ public class EvaluationService {
 			sol += nums.get(0) / nums.get(1);
 		}
 
-		System.out.println(sol);
+		//System.out.println(sol);
 		
 		
 		return sol;
