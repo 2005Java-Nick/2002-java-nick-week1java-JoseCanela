@@ -1094,44 +1094,29 @@ private boolean isPrime(int k) {
 		// TODO Write an implementation for this method declaration
 		int sol =0;
 		String s = string;
-		s = s.replaceAll("\\?", "").trim();
-		s = s.replaceAll("[^\\d-]", " ");
-		//System.out.println(s);
+		String[] sp = s.split(" ");
 		
-		List<String> in = new ArrayList<String>(Arrays.asList(s.trim().split(" ")));
-		List<String> newList = new ArrayList<String>();
- 		List<Integer> nums = new ArrayList<Integer>();
-		int size = in.size();
+		if(sp[3].matches("[a-zA-Z]+")) {
+			s = s.replace(sp[3], ",");
+		}
 		
-		String str1 = in.get(0);
-		String str2 = in.get(size -1);
-		
-		newList.add(str1);
-		newList.add(str2);
-		
-		/*
-		 * for(int i = 0; i<size; i++) { String str1 = in.get(i); String str2 =
-		 * in.get(size -1); if (in.get(i).getClass() == String.class && in.get(size
-		 * -1).getClass() == String.class) { newList.add(str1); newList.add(str2);
-		 * break; } }
-		 */
-		
-		newList.forEach((stg) -> nums.add(Integer.valueOf(stg)));
+		s = s.replaceAll("[^\\d-,]", "");
+		List<String> in = new ArrayList<String>(Arrays.asList(s.split(",")));
 		
 		if (string.contains("plus")) {
-			sol += nums.get(0) + nums.get(1);
+			sol += Integer.valueOf(in.get(0)) + Integer.valueOf(in.get(1));
 		}
 		
 		if (string.contains("minus")) {
-			sol += nums.get(0) - nums.get(1);
+			sol += Integer.valueOf(in.get(0)) - Integer.valueOf(in.get(1));
 		}
 		
 		if (string.contains("multiplied by")) {
-			sol += nums.get(0) * nums.get(1);
+			sol += Integer.valueOf(in.get(0)) * Integer.valueOf(in.get(1));
 		}
 		
 		if (string.contains("divided by")) {
-			sol += nums.get(0) / nums.get(1);
+			sol += Integer.valueOf(in.get(0)) / Integer.valueOf(in.get(1));
 		}
 
 		//System.out.println(sol);
